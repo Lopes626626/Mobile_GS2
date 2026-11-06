@@ -23,6 +23,13 @@ public class RiskEventController {
 
     @GetMapping("/alerts")
     public ResponseEntity<List<RiskEvent>> buscarAlertas() {
+        // O nome aqui agora bate exatamente com o do Service
         return ResponseEntity.ok(service.listarAlertasPriorizados());
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> deletarEvento(@PathVariable Long id) {
+        service.deletarEvento(id);
+        return ResponseEntity.noContent().build();
     }
 }
